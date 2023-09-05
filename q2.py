@@ -1,7 +1,5 @@
 import numpy as np
-
-import matplotlib.plot as plt
-import root
+import matplotlib.pyplot as plt
 
 
 
@@ -30,11 +28,7 @@ def secant(f,a,b,error):
         return secant(f,a-(a-b)*f(a)/(f(a)-f(b)),a, error)
 
 
-def f4(x):
-    return np.cos(x)-x**3
 
-def f5(x):
-    return x**3
 
 """f1 = lambda x: root.f1(x)
 f2 = lambda x: root.f2(x)
@@ -53,8 +47,16 @@ print(newton(f4,df4, 2, 0.001))
 print((bisection(f5, -1, 1, 0.0001)))
 print(newton(f5,df5,0,0.0001)) #Cannot divide by zero.
 """
-print(secant(f4, -10.0, 10.0, 10e-8))
 
+f1 = lambda x: x**3-2*x**2-11*x +12
+df1 = lambda x: 3*x**2 -4*x -11
+b = []
+for i in range(-5,5):
+    b.append(newton(f1,df1, i, 1e-8))
+c = np.zeros_like(b)
+
+plt.plot(b,c)
+plt.legend()
 
 
 
